@@ -1,0 +1,14 @@
+1.周六作业没有写完的 手抄今天代码一遍(html,mapper.xml,mapper,model....)
+2.把今天的代码写一遍
+3.完成图书的修改，删除和新增(要求使用下拉框选择图书类别)
+    在认证阶段，如果密码错了，需要打印在login页面!!!!
+    book:
+        id
+        book_name
+        book_price
+    book_category: 图书类别
+        id
+        cat_name
+4.对图书类别的增删改查
+5.所有的代码要求写异常捕获和处理
+6.预习mycat

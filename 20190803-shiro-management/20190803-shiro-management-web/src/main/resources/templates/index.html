@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <!--
+        thymeleaf模板是一个非常非常非常严谨的模板
+        同样也是由Java代码所转换来的html模板
+        类似于jsp的jstl，当使用某一些特定标签的时候需要自己导入模板
+            xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+        唯一和jsp不一样的是，jsp可以直接导入，但是thymeleaf需要添加所支持的jar包后才能导入
+    -->
+    <meta charset="UTF-8" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Index</h1>
+    <!--
+        当处于游客模式的时候，会打印的信息(游客模式:未认证的状态)
+    -->
+    <shiro:guest></shiro:guest>
+    <!--
+        当认证成功后，获取身份信息(username,user对象)
+    -->
+    <shiro:principal></shiro:principal>
+    <!--
+        /** = user
+        认证过的用户才可以访问到的地址
+    -->
+    <shiro:user>
+        <a>没有认证用户是无法看见我的</a>
+    </shiro:user>
+    <!--
+        当认证的用户拥有否个角色的时候才可以访问到的地址
+        有两种写法
+    -->
+    <!--
+        第一种写法
+    -->
+    <shiro:hasRole name="user_manager">
+        <a href="userList">用户管理</a>
+    </shiro:hasRole>
+    <!--
+        第二种写法
+    -->
+    <a href="userList" shiro:hasRole="user_manager">用户管理</a>
+    <a href="bookList">图书管理</a>
+    <shiro:hasRole name="student_manager">
+        <a href="studentList">学生管理</a>
+    </shiro:hasRole>
+</body>
+</html>
